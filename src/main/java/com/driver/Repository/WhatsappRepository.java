@@ -39,7 +39,10 @@ public class WhatsappRepository {
         }
     }
     public int createMessage(String content){
-     Message message=new Message(++mCount,content,new Date());
+     Message message=new Message(++mCount,content);
+     message.setTimestamp(new Date());
+
+
      messageList.add(message);
      return mCount;
     }
