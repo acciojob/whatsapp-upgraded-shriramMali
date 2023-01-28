@@ -107,10 +107,7 @@ public class WhatsappRepository {
   if (groupdb.get(group1).get(0)==user){
       throw new Exception("Cannot remove admin");
   }
-
-
-
-        return 0;
+     return 0;
     }
 
 }
