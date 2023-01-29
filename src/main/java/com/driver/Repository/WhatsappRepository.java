@@ -33,7 +33,7 @@ public class WhatsappRepository {
             return group;
         }
         else {
-            Group group=new Group("Group"+ ++gCount,users.size());
+            Group group=new Group("Group "+ ++gCount,users.size());
             groupdb.put(group,users);
             return group;
         }
