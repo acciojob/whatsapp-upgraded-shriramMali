@@ -64,23 +64,13 @@ public class WhatsappRepository {
        }
 
 
-       if(userMsgdb.containsKey(sender))
-           userMsgdb.get(sender).add(message);
-       else {
-           List<Message> lm=new ArrayList<>();
-           lm.add(message);
-           userMsgdb.put(sender,lm);
+       if(userMsgdb.containsKey(group)){
+        userMsgdb.get(group).add(message);
+           //userMsgdb.put(sender,lm);
        }
 
-       if (groupdb.containsKey(group))
-       groupdb.get(group).add(sender);
-       else {
-           List<User> lm1=new ArrayList<>();
-           lm1.add(sender);
-           groupdb.put(group,lm1);
-       }
 
-       return groupdb.get(group).size();
+       return userMsgdb.get(group).size();
     }
 
 
