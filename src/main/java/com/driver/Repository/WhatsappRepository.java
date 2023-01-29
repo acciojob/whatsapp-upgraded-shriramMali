@@ -75,12 +75,12 @@ public class WhatsappRepository {
        if (groupdb.containsKey(group))
        groupdb.get(group).add(sender);
        else {
-           List<User> lm=new ArrayList<>();
-           lm.add(sender);
-           groupdb.put(group,lm);
+           List<User> lm1=new ArrayList<>();
+           lm1.add(sender);
+           groupdb.put(group,lm1);
        }
 
-       return groupdb.size();
+       return groupdb.get(group).size();
     }
 
 
