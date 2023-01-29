@@ -27,13 +27,13 @@ public class WhatsappRepository {
     }
     public Group createGroup(List<User> users){
         if(users.size()==2){
-            Group group=new Group(users.get(1).getName(),users);
+            Group group=new Group(users.get(1).getName(),2);
             groupdb.put(group,users);
 
             return group;
         }
         else {
-            Group group=new Group(users.get(1).getName()+ ++gCount,users);
+            Group group=new Group(users.get(1).getName()+ ++gCount,users.size());
             groupdb.put(group,users);
             return group;
         }
