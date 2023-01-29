@@ -23,7 +23,7 @@ public class WhatsappRepository {
         if(userdb.containsValue(mobile)) throw new Exception("User already exists");
 
         User user=new User(name,mobile);
-        return "Success";
+        return "SUCCESS";
     }
     public Group createGroup(List<User> users){
         if(users.size()==2){
@@ -59,7 +59,7 @@ public class WhatsappRepository {
            }
        }
 
-       if(flag==true){
+       if(flag==false){
            throw new Exception("You are not allowed to send message");
        }
 
@@ -159,7 +159,7 @@ public class WhatsappRepository {
         approver=user;
         user=temp;
 
-        return "Success";
+        return "SUCCESS";
     }
 
 
