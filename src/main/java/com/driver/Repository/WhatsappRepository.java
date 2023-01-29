@@ -107,7 +107,64 @@ public class WhatsappRepository {
   if (groupdb.get(group1).get(0)==user){
       throw new Exception("Cannot remove admin");
   }
-     return 0;
+
+        for(Group group:grpMsgdb.keySet()){
+
+           if(grpMsgdb.get(group).contains(user)) grpMsgdb.get(group).remove(user);
+            }
+
+        List<Message> list=userMsgdb.get(user);
+
+        for(Group group:grpMsgdb.keySet()) {
+
+            for (Message message: grpMsgdb.get(group)){
+                if(list.contains(message)) grpMsgdb.get(group).remove(message);
+            }
+        }
+
+
+        for(Message message:messageList)
+        {
+            if(list.contains(message)) messageList.remove(message);
+        }
+
+
+        userdb.remove(user);
+        for(Group group:groupdb.keySet()){
+
+            for (User user1:groupdb.get(group)){
+                if(user1==user){
+                    groupdb.get(group).remove(user);
+                }
+            }
+        }
+
+
+        int updatedno=userdb.size()+messageList.size()+grpMsgdb.size();
+        return updatedno;
     }
+
+    public String changeAdmin(User approver, User user, Group group) throws Exception{
+
+
+        if(!groupdb.containsKey(group)) throw new Exception("Group does not exist");
+
+
+        List<User>userList=groupdb.get(group);
+        if(userList.get(0)!=approver)  throw new Exception("Approver does not have rights");
+
+        if (!userList.contains(user)) throw new Exception("User is not a participant");
+
+        User temp=approver;
+        approver=user;
+        user=temp;
+
+        return "Success";
+    }
+
+
+
+
+
 
 }

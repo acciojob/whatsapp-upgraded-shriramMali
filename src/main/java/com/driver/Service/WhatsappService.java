@@ -32,9 +32,9 @@ public class WhatsappService {
         return whatsappRepository.sendMessage(message,sender,group);
     }
 
-    public String changeAdmin(User approver, User user, Group group){
+    public String changeAdmin(User approver, User user, Group group) throws Exception {
 
-        return "";
+        return whatsappRepository.changeAdmin(approver,user,group);
     }
 
     public int removeUser(User user) throws Exception {
