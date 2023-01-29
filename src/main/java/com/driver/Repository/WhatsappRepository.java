@@ -64,11 +64,16 @@ public class WhatsappRepository {
        }
 
 
-       if(userMsgdb.containsKey(group)){
-        userMsgdb.get(group).add(message);
+       if(grpMsgdb.containsKey(group)){
+        grpMsgdb.get(group).add(message);
            //userMsgdb.put(sender,lm);
        }
-
+       else {
+           List<Message>m=new ArrayList<>();
+           m.add(message);
+           grpMsgdb.put(group,m);
+       }
+       userMsgdb.get(sender).add(message);
 
        return userMsgdb.get(group).size();
     }
@@ -118,8 +123,8 @@ public class WhatsappRepository {
             if(list.contains(message)) messageList.remove(message);
         }
 
-
-        userdb.remove(user);
+          if(userdb.containsKey(user))
+           userdb.remove(user);
         for(Group group:groupdb.keySet()){
 
             for (User user1:groupdb.get(group)){
